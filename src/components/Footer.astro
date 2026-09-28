@@ -1,44 +1,24 @@
 ---
-import Logo from './Logo.astro';
-import { company, nav, riskDisclosure } from '../lib/site';
+import { company, footerLinks, riskDisclosure } from '../lib/site';
 
 const year = new Date().getFullYear();
+const addr = company.address;
 ---
 
-<footer class="border-t border-white/8 bg-ink-950">
-  <div class="mx-auto max-w-7xl px-5 py-14 lg:px-8">
-    <div id="risk-disclosure" class="scroll-mt-24 max-w-3xl">
-      <h2 class="text-sm font-semibold text-slate-300">Risk disclosure</h2>
-      <p class="mt-3 text-[0.78rem] leading-relaxed text-slate-500">{riskDisclosure}</p>
-    </div>
-
-    <div
-      class="mt-10 flex flex-col gap-4 border-t border-white/8 pt-6 text-sm text-slate-400 sm:flex-row sm:flex-wrap sm:items-center"
-    >
-      <Logo compact />
-      <nav class="flex flex-wrap gap-x-4 gap-y-2" aria-label="Footer">
-        {
-          nav.map((l) => (
-            <a href={l.href} class="whitespace-nowrap hover:text-white">
-              {l.label}
-            </a>
-          ))
-        }
-        <a href="#guide" class="whitespace-nowrap hover:text-white">Guide</a>
-        <a href={`mailto:${company.email}`} class="whitespace-nowrap hover:text-white">Contact</a>
-        <a href="/privacy" class="whitespace-nowrap hover:text-white">Privacy</a>
-        <a href="/terms" class="whitespace-nowrap hover:text-white">Terms</a>
-        <a href="#risk-disclosure" class="whitespace-nowrap hover:text-white">Risk</a>
-      </nav>
-      <p class="tnum sm:ml-auto">
-        &copy; {year} {company.legalName}
-        <span class="mx-2 text-slate-600" aria-hidden="true">&middot;</span>
-        {company.address.city}, {company.address.state}
-        <span class="mx-2 text-slate-600" aria-hidden="true">&middot;</span>
-        <a href={`tel:${company.phoneHref}`} class="font-mono whitespace-nowrap hover:text-white"
-          >{company.phone}</a
-        >
-      </p>
-    </div>
-  </div>
+<footer class="foot">
+  <p id="risk">{riskDisclosure}</p>
+  <p class="colophon">
+    {company.legalName}. {addr.street}, {addr.city}, {addr.state} {addr.zip}.{' '}
+    <a href={`tel:${company.phoneHref}`}>{company.phone}</a>.{' '}
+    <a href={`mailto:${company.email}`}>{company.email}</a>. {company.tagline}.{' '}
+    {
+      footerLinks.map((l, i) => (
+        <>
+          {i > 0 ? ' · ' : ''}
+          <a href={l.href}>{l.label}</a>
+        </>
+      ))
+    }
+    . © {year}.
+  </p>
 </footer>

@@ -1,111 +1,33 @@
----
-import { buildSparkline, sparkPoints } from '../lib/chart';
-
-const indicators = [
-  {
-    name: 'Omega Momentum',
-    version: 'v4.2',
-    summary:
-      'Volatility-normalised momentum. The zero-line cross is the signal; the histogram depth tells you how much conviction the model has in it.',
-    specs: [
-      ['Inputs', 'Multi-timeframe ROC, ATR percentile, volume delta'],
-      ['Model', 'Gradient-boosted classifier, weekly refit'],
-      ['Output', 'Histogram −1.0 to +1.0 plus regime label'],
-    ],
-    accent: 'omega',
-    seed: 411,
-  },
-  {
-    name: 'Regime Filter',
-    version: 'v2.8',
-    summary:
-      'Classifies the tape into compression, expansion, or exhaustion so you know which of your rules should even be active right now.',
-    specs: [
-      ['Inputs', 'Realised vol, range efficiency, gap behaviour'],
-      ['Model', 'Hidden Markov state classifier'],
-      ['Output', 'Three-state label with transition probability'],
-    ],
-    accent: 'azure',
-    seed: 733,
-  },
-  {
-    name: 'Exposure Guard',
-    version: 'v1.9',
-    summary:
-      'Position-size ceiling derived from current volatility and your stated max drawdown. It tells you the largest size your account can survive, not the largest your broker allows.',
-    specs: [
-      ['Inputs', 'Account equity, ATR, correlation to open risk'],
-      ['Model', 'Deterministic — no ML, fully auditable'],
-      ['Output', 'Contract/share ceiling per setup'],
-    ],
-    accent: 'slate',
-    seed: 902,
-  },
-] as const;
-
-const accentMap = {
-  omega: 'var(--color-omega-400)',
-  azure: 'var(--color-azure-400)',
-  slate: 'var(--color-slate-line)',
-} as const;
----
-
-<section id="product" class="scroll-mt-20 py-20 lg:py-28">
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-    <div class="max-w-2xl">
-      <h2 class="display text-4xl text-white lg:text-5xl">Three tools. One decision each.</h2>
-      <p class="mt-5 text-[1.0625rem] leading-relaxed text-slate-400">
-        We publish what each model takes as input and what it emits. If an indicator
-        vendor will not tell you that, you are not buying an analysis tool &mdash;
-        you are buying a lottery ticket with a logo on it.
+<section id="screen" class="band">
+  <div class="split split-flip">
+    <div class="split-copy">
+      <h2 class="display display-sec">Names in the green.</h2>
+      <p class="prose">
+        The screen gathers the issues placed in the green, the names the work considers set to
+        rise. The readings are mathematical. The method is not published.
       </p>
+      <div class="actions">
+        <a class="btn" href="#access">Request access</a>
+      </div>
     </div>
-
-    <div class="mt-14 divide-y divide-white/8 border-y border-white/8">
-      {
-        indicators.map((ind) => {
-          const spark = buildSparkline(ind.seed);
-          return (
-            <article class="grid gap-6 py-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
-              <div>
-                <div class="flex items-baseline justify-between gap-3">
-                  <h3 class="display text-2xl text-white">{ind.name}</h3>
-                  <span class="tnum font-mono text-[0.65rem] tracking-wider text-slate-500">
-                    {ind.version}
-                  </span>
-                </div>
-                <svg
-                  viewBox="0 0 240 44"
-                  class="mt-4 h-11 w-48"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <polyline
-                    points={sparkPoints(spark, 240, 44)}
-                    fill="none"
-                    stroke={accentMap[ind.accent]}
-                    stroke-width="1.6"
-                    vector-effect="non-scaling-stroke"
-                  />
-                </svg>
-              </div>
-              <div>
-                <p class="text-sm leading-relaxed text-slate-400">{ind.summary}</p>
-                <dl class="mt-5 space-y-2.5">
-                  {ind.specs.map(([k, v]) => (
-                    <div class="flex gap-3 text-[0.78rem]">
-                      <dt class="w-16 shrink-0 font-mono tracking-wider text-slate-600 uppercase">
-                        {k}
-                      </dt>
-                      <dd class="text-slate-400">{v}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            </article>
-          );
-        })
-      }
-    </div>
+    <figure class="roll-figure">
+      <ol class="roll" aria-label="Drawing of the screened list. Names are not shown.">
+        <li class="roll-head">
+          <span>Issue</span>
+          <span>Standing</span>
+        </li>
+        {
+          [1, 2, 3, 4, 5].map(() => (
+            <li>
+              <span class="roll-rule" aria-hidden="true"></span>
+              <span class="standing">Green</span>
+            </li>
+          ))
+        }
+      </ol>
+      <figcaption>
+        A drawing of the list. The live names are shown after access. Not a recommendation.
+      </figcaption>
+    </figure>
   </div>
 </section>

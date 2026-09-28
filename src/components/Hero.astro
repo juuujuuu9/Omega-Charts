@@ -1,65 +1,23 @@
 ---
 import ChartPanel from './ChartPanel.astro';
-import { platforms } from '../lib/site';
+import { company } from '../lib/site';
 ---
 
-<section class="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24">
-  <!-- Atmosphere, built from gradients rather than stock photography -->
-  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-    <div class="grid-bg absolute inset-0 opacity-60"></div>
-    <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-ink-950">
-    </div>
-  </div>
-
-  <div class="mx-auto max-w-7xl px-5 lg:px-8">
-    <div class="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-12">
-      <!-- ── Copy ── -->
-      <div>
-        <h1 class="display text-[2.75rem] text-white sm:text-6xl lg:text-[4.1rem]">
-          AI-embedded<br />
-          <span class="text-omega-400">momentum indicators</span><br />
-          <span class="text-slate-300">for better trading decisions</span>
-        </h1>
-
-        <p class="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-slate-400">
-          Omega Charts builds momentum models that run inside the platform you already
-          trade on. They adapt to the current volatility regime instead of a fixed
-          lookback &mdash; so a signal in a quiet tape does not look identical to one in
-          a violent one.
-        </p>
-
-        <div class="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <a
-            href="#guide"
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-lg bg-omega-500 px-6 py-3.5 text-[0.95rem] font-semibold text-white transition-[background-color] duration-150 hover:bg-omega-400"
-          >
-            Get the guide
-          </a>
-          <a
-            href="#product"
-            class="inline-flex items-center justify-center whitespace-nowrap rounded-lg border border-white/12 px-6 py-3.5 text-[0.95rem] font-medium text-slate-200 transition-[border-color,color] duration-150 hover:border-white/30 hover:text-white"
-          >
-            See the indicators
-          </a>
-        </div>
-
-        <p class="mt-4 text-[0.78rem] text-slate-500">
-          Free, 22 pages, no card. Access is by invitation. We are a software company
-          &mdash; not a signal room, not a fund.
-        </p>
-
-        <ul class="hairline mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t pt-6">
-          {
-            platforms.map((p) => (
-              <li class="font-mono text-[0.72rem] tracking-wide whitespace-nowrap text-slate-400">
-                {p.name}
-              </li>
-            ))
-          }
-        </ul>
+<section id="chart">
+  <div class="split">
+    <div class="split-copy hero-copy">
+      <h1 class="display display-hero">When to buy. When to sell.</h1>
+      <p class="lede">
+        The chart marks the turn in a stock. The screen lists the names sitting in the green.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#access">Request access</a>
       </div>
-
-      <!-- ── Product visual ── -->
+      <p class="call">
+        Or call <a href={`tel:${company.phoneHref}`}>{company.phone}</a>. {company.hours}.
+      </p>
+    </div>
+    <div class="hero-proof">
       <ChartPanel />
     </div>
   </div>
