@@ -1,0 +1,26 @@
+---
+import { pillars, company } from '../lib/site';
+---
+
+<section class="relative overflow-hidden border-y border-white/8 py-20 lg:py-24">
+  <div class="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-3xl px-5 lg:px-8">
+    <h2 class="display text-4xl text-white lg:text-5xl">{company.motto}</h2>
+    <p class="mt-5 max-w-xl text-sm leading-relaxed text-slate-400">
+      Four commitments that decide what we will and will not ship. They are also the
+      order in which we teach.
+    </p>
+
+    <div class="mt-12 divide-y divide-white/8 border-y border-white/8">
+      {
+        pillars.map((p) => (
+          <div class="py-6">
+            <h3 class="display text-lg text-white">{p.name}</h3>
+            <p class="mt-2 max-w-xl text-sm leading-relaxed text-slate-400">{p.line}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

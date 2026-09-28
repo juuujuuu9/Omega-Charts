@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import StatSection from '../components/StatSection.astro';
+import Indicators from '../components/Indicators.astro';
+import Pillars from '../components/Pillars.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Platforms from '../components/Platforms.astro';
+import LeadMagnet from '../components/LeadMagnet.astro';
+import Faq from '../components/Faq.astro';
+import Company from '../components/Company.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Omega Charts — AI-embedded momentum indicators for better trading decisions"
+  description="Volatility-adaptive momentum indicators that run inside TradingView, NinjaTrader, ThinkOrSwim, and MetaTrader 5. Download The 8% Framework free. A software and education company — not a signal service."
+>
+  <Header />
+
+  <main id="main">
+    <Hero />
+    <StatSection />
+    <Indicators />
+    <Pillars />
+    <HowItWorks />
+    <Platforms />
+    <LeadMagnet />
+    <Faq />
+    <Company />
+  </main>
+
+  <Footer />
+</Base>

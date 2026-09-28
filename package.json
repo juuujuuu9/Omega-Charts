@@ -1,0 +1,24 @@
+{
+  "name": "omega-charts",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^11.0.11",
+    "astro": "^7.3.5",
+    "resend": "^6.30.0"
+  },
+  "devDependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.1.2",
+    "@fontsource/barlow-condensed": "^5.1.1",
+    "@tailwindcss/vite": "^4.0.9",
+    "tailwindcss": "^4.0.9",
+    "typescript": "^5.7.3"
+  }
+}

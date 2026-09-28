@@ -1,0 +1,97 @@
+@import 'tailwindcss';
+
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource/barlow-condensed/600.css';
+@import '@fontsource/barlow-condensed/700.css';
+
+@theme {
+  /* Ink — the navy/near-black base pulled from the brand banner */
+  --color-ink-950: #04080f;
+  --color-ink-900: #070d18;
+  --color-ink-850: #0a1322;
+  --color-ink-700: #16253b;
+
+  /* Omega green — the primary accent */
+  --color-omega-500: #0e9f47;
+  --color-omega-400: #22c55e;
+  --color-omega-300: #4ade80;
+
+  /* Azure — the secondary tech accent from the banner backdrop */
+  --color-azure-500: #1d7fe0;
+  --color-azure-400: #38a5f5;
+
+  /* Loss / short side */
+  --color-signal-red: #e5484d;
+
+  --color-ink-text: #dbe4f0;
+  --color-paper: #ffffff;
+  --color-axis: #64748b;
+  --color-slate-line: #94a3b8;
+
+  --font-display: 'Barlow Condensed', 'Oswald', 'Arial Narrow', sans-serif;
+  --font-sans: system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink-950);
+    color: var(--color-ink-text);
+    overflow-x: clip;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Tabular numerals everywhere numbers matter */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  ::selection {
+    background-color: var(--color-omega-500);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-omega-400);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .hairline {
+    border-color: color-mix(in oklab, var(--color-paper) 8%, transparent);
+  }
+
+  /* Fine engineering grid — signals precision without stock imagery */
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--color-paper) 3.5%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-paper) 3.5%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}

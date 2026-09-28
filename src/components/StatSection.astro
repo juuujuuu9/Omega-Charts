@@ -1,0 +1,66 @@
+---
+import { lossStat } from '../lib/site';
+---
+
+<section class="relative border-y border-white/8 bg-ink-900/60 py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:gap-20">
+      <div>
+        <span class="display text-7xl leading-none text-omega-400 lg:text-8xl">
+          {lossStat.range}
+        </span>
+        <p class="mt-4 max-w-md text-lg leading-relaxed text-slate-300">
+          of retail trading accounts lose money over a given reporting period.
+          Not because the market is rigged &mdash; because most retail decisions
+          are made without a rule that can be stated in advance.
+        </p>
+
+        <p class="mt-5 max-w-md text-[0.8rem] leading-relaxed text-slate-500">
+          Source: <a
+            href={lossStat.sourceUrl}
+            rel="noopener noreferrer nofollow"
+            target="_blank"
+            class="text-slate-400 underline decoration-slate-600 underline-offset-2 transition-colors hover:text-omega-300"
+            >{lossStat.source}</a
+          > Figures vary by broker, instrument, and period; we quote the range rather
+          than the most dramatic number in it.
+        </p>
+      </div>
+
+      <div class="space-y-5">
+        {
+          [
+            {
+              n: '01',
+              t: 'Entries without a stated edge',
+              d: 'If you cannot name the condition that made the trade valid, you cannot tell a bad outcome from a bad decision.',
+            },
+            {
+              n: '02',
+              t: 'Fixed-parameter indicators',
+              d: 'A 14-period setting that worked in a calm tape produces constant false positives when realised volatility doubles.',
+            },
+            {
+              n: '03',
+              t: 'Size that ignores the losing streak',
+              d: 'Most accounts are not killed by a bad trade. They are killed by normal-sized losses at abnormal position size.',
+            },
+            {
+              n: '04',
+              t: 'No post-trade audit',
+              d: 'Without a log, every trader remembers their winners accurately and their losers charitably.',
+            },
+          ].map((item) => (
+            <div class="hairline flex gap-5 border-b pb-5 last:border-0">
+              <span class="tnum mt-0.5 font-mono text-xs text-omega-500">{item.n}</span>
+              <div>
+                <h3 class="text-[0.95rem] font-semibold text-white">{item.t}</h3>
+                <p class="mt-1.5 text-sm leading-relaxed text-slate-400">{item.d}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

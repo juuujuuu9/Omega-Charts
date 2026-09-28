@@ -1,0 +1,42 @@
+---
+import { platforms } from '../lib/site';
+---
+
+<section id="platforms" class="scroll-mt-20 border-y border-white/8 bg-ink-900/40 py-12 lg:py-16">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-20">
+      <div>
+        <h2 class="display text-4xl text-white lg:text-5xl">
+          It runs where you already trade
+        </h2>
+        <p class="mt-5 text-[1.0625rem] leading-relaxed text-slate-400">
+          No proprietary terminal to learn and no data feed to re-buy. You install the
+          package into your existing platform and it appears as a normal studies
+          overlay.
+        </p>
+        <p class="mt-4 text-sm leading-relaxed text-slate-500">
+          Trading somewhere else? Tell us in the form and we will be straight with you
+          about whether a port is realistic.
+        </p>
+      </div>
+
+      <div class="grid gap-px overflow-hidden rounded-xl border border-white/8 bg-white/8 sm:grid-cols-2">
+        {
+          platforms.map((p) => (
+            <div class="flex items-center justify-between gap-4 bg-ink-950 px-6 py-6">
+              <div>
+                <h3 class="text-[0.95rem] font-semibold text-white">{p.name}</h3>
+                <p class="mt-1 font-mono text-[0.68rem] tracking-wider text-slate-500 uppercase">
+                  {p.note}
+                </p>
+              </div>
+              <span class="inline-flex h-6 items-center rounded-full border border-omega-500/30 bg-omega-500/10 px-2.5 font-mono text-[0.6rem] tracking-wider text-omega-300 uppercase">
+                Native
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

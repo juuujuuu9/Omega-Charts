@@ -1,0 +1,89 @@
+---
+import { company } from '../lib/site';
+
+const addr = company.address;
+const mapsQuery = encodeURIComponent(
+  `${addr.street}, ${addr.city}, ${addr.state} ${addr.zip}`,
+);
+---
+
+<section
+  id="company"
+  class="scroll-mt-20 border-t border-white/8 bg-ink-900/40 py-20 lg:py-24"
+>
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:gap-20">
+      <div>
+        <h2 class="display text-4xl text-white lg:text-5xl">
+          A real address and a real phone
+        </h2>
+        <p class="mt-5 text-[1.0625rem] leading-relaxed text-slate-400">
+          {company.legalName} is a registered Florida limited liability company
+          operating out of Fort Lauderdale. We are a software and education business.
+          We do not take custody of client funds, we do not manage accounts, and we are
+          not compensated by any broker for directing order flow.
+        </p>
+
+        <dl class="mt-9 grid gap-6 sm:grid-cols-2">
+          <div>
+            <dt class="text-xs font-medium text-slate-500">Registered office</dt>
+            <dd class="mt-2 text-sm leading-relaxed text-slate-300">
+              {addr.street}<br />
+              {addr.city}, {addr.state} {addr.zip}<br />
+              {addr.country}
+            </dd>
+            <a
+              href={`https://maps.google.com/?q=${mapsQuery}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-2 inline-block text-[0.78rem] text-azure-400 underline decoration-azure-400/40 underline-offset-2 hover:text-azure-300"
+            >
+              View on map
+            </a>
+          </div>
+
+          <div>
+            <dt class="text-xs font-medium text-slate-500">Direct contact</dt>
+            <dd class="mt-2 space-y-1.5 text-sm text-slate-300">
+              <a
+                href={`tel:${company.phoneHref}`}
+                class="tnum block font-mono transition-colors hover:text-omega-300"
+                >{company.phone}</a
+              >
+              <a
+                href={`mailto:${company.email}`}
+                class="block transition-colors hover:text-omega-300">{company.email}</a
+              >
+            </dd>
+            <p class="mt-2 text-[0.78rem] text-slate-500">
+              Weekdays, 9am&ndash;5pm ET. A person answers.
+            </p>
+          </div>
+        </dl>
+      </div>
+
+      <!-- What we are / are not: the fastest legitimacy signal on the page -->
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div class="rounded-xl border border-omega-500/25 bg-omega-500/[0.04] p-6">
+          <h3 class="text-sm font-semibold text-omega-300">What we are</h3>
+          <ul class="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
+            <li>A software company selling charting indicators</li>
+            <li>An education business with a published curriculum</li>
+            <li>Transparent about model inputs and outputs</li>
+            <li>Capped in cohort size, by design</li>
+          </ul>
+        </div>
+
+        <div class="rounded-xl border border-white/10 bg-ink-950/60 p-6">
+          <h3 class="text-sm font-semibold text-slate-400">What we are not</h3>
+          <ul class="mt-4 space-y-3 text-sm leading-relaxed text-slate-400">
+            <li>A registered investment adviser or broker-dealer</li>
+            <li>A signal room or copy-trading group</li>
+            <li>A fund, or any manager of client capital</li>
+            <li>A source of guaranteed or projected returns</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

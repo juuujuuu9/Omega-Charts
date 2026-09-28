@@ -1,0 +1,229 @@
+---
+import { leadMagnet, platforms } from '../lib/site';
+---
+
+<section id="guide" class="scroll-mt-20 py-28 lg:py-36">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-16">
+        <!-- ── Offer ── -->
+        <div>
+          <h2 class="display text-4xl text-white lg:text-[3.25rem]">
+            {leadMagnet.title}
+          </h2>
+          <p class="mt-3 text-[1.0625rem] text-slate-300">{leadMagnet.subtitle}</p>
+
+          <ul class="mt-8 space-y-3.5">
+            {
+              leadMagnet.chapters.map((c) => (
+                <li class="flex gap-3">
+                  <svg
+                    viewBox="0 0 20 20"
+                    class="mt-0.5 h-4 w-4 shrink-0 text-omega-400"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8.2 13.6 4.6 10l1.4-1.4 2.2 2.2 5.8-5.8L15.4 6.4l-7.2 7.2Z" />
+                  </svg>
+                  <span class="text-sm leading-relaxed text-slate-400">{c}</span>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="hairline mt-8 flex items-center gap-4 border-t pt-6">
+            <div class="flex items-center gap-2 text-[0.78rem] text-slate-500">
+              <svg viewBox="0 0 20 20" class="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M10 1a4 4 0 0 0-4 4v2H5a1.5 1.5 0 0 0-1.5 1.5v8A1.5 1.5 0 0 0 5 18h10a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 15 7h-1V5a4 4 0 0 0-4-4Zm2 6H8V5a2 2 0 1 1 4 0v2Z"
+                />
+              </svg>
+              No card required
+            </div>
+            <span class="hairline h-3.5 w-px border-l"></span>
+            <div class="text-[0.78rem] text-slate-500">One-click unsubscribe</div>
+          </div>
+        </div>
+
+        <!-- ── Form ── -->
+        <div class="rounded-xl border border-white/10 bg-ink-950/70 p-6 lg:p-7">
+          <form id="lead-form" novalidate class="relative space-y-4">
+            <div>
+              <label for="firstName" class="block text-sm text-slate-400">First name</label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                autocomplete="given-name"
+                required
+                class="mt-2 w-full rounded-md border border-white/12 bg-ink-900 px-3.5 py-2.5 text-sm text-white transition-[border-color] duration-150 focus:border-omega-500 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm text-slate-400">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                class="mt-2 w-full rounded-md border border-white/12 bg-ink-900 px-3.5 py-2.5 text-sm text-white transition-[border-color] duration-150 focus:border-omega-500 focus:outline-none"
+              />
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label for="platform" class="block text-sm text-slate-400">Platform</label>
+                <select
+                  id="platform"
+                  name="platform"
+                  class="mt-2 w-full rounded-md border border-white/12 bg-ink-900 px-3.5 py-2.5 text-sm text-white transition-[border-color] duration-150 focus:border-omega-500 focus:outline-none"
+                >
+                  <option value="">Select&hellip;</option>
+                  {platforms.map((p) => <option value={p.name}>{p.name}</option>)}
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="experience" class="block text-sm text-slate-400">Experience</label>
+                <select
+                  id="experience"
+                  name="experience"
+                  class="mt-2 w-full rounded-md border border-white/12 bg-ink-900 px-3.5 py-2.5 text-sm text-white transition-[border-color] duration-150 focus:border-omega-500 focus:outline-none"
+                >
+                  <option value="">Select&hellip;</option>
+                  <option value="Under 1 year">Under 1 year</option>
+                  <option value="1-3 years">1&ndash;3 years</option>
+                  <option value="3-10 years">3&ndash;10 years</option>
+                  <option value="10+ years">10+ years</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Honeypot: hidden from humans, irresistible to naive bots -->
+            <div class="absolute -left-[9999px]" aria-hidden="true">
+              <label for="company_website">Website</label>
+              <input id="company_website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <label class="flex cursor-pointer gap-3 pt-1">
+              <input
+                type="checkbox"
+                name="consent"
+                required
+                class="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 bg-ink-900 accent-omega-500"
+              />
+              <span class="text-[0.78rem] leading-relaxed text-slate-500">
+                Email me the guide and occasional research notes. I understand Omega
+                Charts is a software and education company, not an investment adviser.
+              </span>
+            </label>
+
+            <button
+              type="submit"
+              id="lead-submit"
+              class="w-full whitespace-nowrap rounded-lg bg-omega-500 px-6 py-3.5 text-[0.95rem] font-semibold text-white transition-[background-color] duration-150 hover:bg-omega-400 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <span data-label>Send me the guide</span>
+              <span data-spinner class="hidden">Sending&hellip;</span>
+            </button>
+
+            <p
+              id="lead-error"
+              role="alert"
+              class="hidden rounded-md border border-signal-red/30 bg-signal-red/10 px-3.5 py-2.5 text-[0.8rem] text-red-300"
+            >
+            </p>
+          </form>
+
+          <!-- Success state -->
+          <div id="lead-success" class="hidden text-center" role="status">
+            <div
+              class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-omega-500/15"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                class="h-6 w-6 text-omega-400"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="m5 13 4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h3 class="display mt-5 text-2xl text-white">Check your inbox</h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-slate-400">
+              <span id="lead-success-email" class="text-slate-200"></span> is on its way.
+              If it has not landed in two minutes, look in promotions or spam &mdash;
+              and add us to your contacts so the research notes reach you.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script>
+  const form = document.getElementById('lead-form') as HTMLFormElement | null;
+  const success = document.getElementById('lead-success');
+  const errorBox = document.getElementById('lead-error');
+  const submit = document.getElementById('lead-submit') as HTMLButtonElement | null;
+
+  if (form && success && errorBox && submit) {
+    const label = submit.querySelector('[data-label]') as HTMLElement;
+    const spinner = submit.querySelector('[data-spinner]') as HTMLElement;
+
+    const showError = (msg: string) => {
+      errorBox.textContent = msg;
+      errorBox.classList.remove('hidden');
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.classList.add('hidden');
+
+      const data = new FormData(form);
+      const email = String(data.get('email') ?? '').trim();
+      const firstName = String(data.get('firstName') ?? '').trim();
+
+      if (!firstName) return showError('Please enter your first name.');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))
+        return showError('Please enter a valid email address.');
+      if (!data.get('consent')) return showError('Please tick the consent box to continue.');
+
+      submit.disabled = true;
+      label.classList.add('hidden');
+      spinner.classList.remove('hidden');
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(data.entries())),
+        });
+
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+
+        if (!res.ok) {
+          throw new Error(body.error || 'Something went wrong on our end.');
+        }
+
+        const emailEl = document.getElementById('lead-success-email');
+        if (emailEl) emailEl.textContent = email;
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        showError(
+          err instanceof Error
+            ? `${err.message} You can also email info@omegacharts.com directly.`
+            : 'Network error. Please try again.',
+        );
+        submit.disabled = false;
+        label.classList.remove('hidden');
+        spinner.classList.add('hidden');
+      }
+    });
+  }
+</script>

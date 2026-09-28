@@ -1,0 +1,45 @@
+---
+const steps = [
+  {
+    n: '01',
+    t: 'Download the framework',
+    d: 'Start with the free 22-page guide. It contains the actual pre-trade checklist we require of members — not a teaser for it.',
+  },
+  {
+    n: '02',
+    t: 'We review your profile',
+    d: 'Platform, instruments, account size, and experience. If our tools are wrong for how you trade, we will say so rather than sell you a seat.',
+  },
+  {
+    n: '03',
+    t: 'Cohort onboarding',
+    d: 'If a seat opens, you get the indicator package for your platform, a one-to-one setup session, and access to the weekly model notes.',
+  },
+] as const;
+---
+
+<section id="how" class="scroll-mt-20 py-20 lg:py-28">
+  <div class="mx-auto max-w-3xl px-5 lg:px-8">
+    <p class="eyebrow text-omega-400">How it works</p>
+    <h2 class="display mt-4 text-4xl text-white lg:text-5xl">Three steps, and a real no</h2>
+    <p class="mt-5 text-[1.0625rem] leading-relaxed text-slate-400">
+      Access is capped because onboarding is done by a person and because edge decays as
+      more accounts act on the same reading. That is the whole reason for the invitation
+      model.
+    </p>
+
+    <ol class="mt-12 divide-y divide-white/8 border-y border-white/8">
+      {
+        steps.map((s) => (
+          <li class="grid grid-cols-[3.25rem_minmax(0,1fr)] gap-4 py-6">
+            <span class="display text-2xl text-omega-500">{s.n}</span>
+            <div>
+              <h3 class="text-lg font-semibold text-white">{s.t}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">{s.d}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
